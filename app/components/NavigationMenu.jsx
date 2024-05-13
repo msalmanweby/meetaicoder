@@ -36,6 +36,7 @@ function NavigationMenu() {
             <Image className='sm:scale-0' src="/menubar.svg" width={40} height={40} alt='Meet-Ai Coder Menu' />
             <div className='hidden sm:flex gap-7'>
                 {MenuItems.map((item, index) => (
+
                     <Link className={`p-2 justify-center items-center text-white text-sm font-semibold ${item.isContact ? " rounded-lg border-transparent bg-gradient-to-r from-orange-500 to-red-500" : "bg-none"} ${pathname === item.href ? "border-b-2 border-orange-500" : ''}`} key={index} href={item.href}>{item.title}</Link>
                 ))}
             </div>
