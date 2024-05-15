@@ -5,6 +5,7 @@ import FaqItem from "./components/FaqItem";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 
+import { Circle } from 'lucide-react';
 export default function Home() {
 
   const brands = [
@@ -33,8 +34,10 @@ export default function Home() {
 
     <div>
       <div className="flex px-4 py-2 items-center justify-center">
+
         <div className="flex flex-row gap-2">
-          <Image className="animate-ping w-auto h-auto" src='/online.svg' width={8} height={8} alt="Meet-AI coder available" />
+
+          <Image className="w-[16px] h-[16px]" src='/online.svg' width={16} height={16} alt="Meet-AI coder available" />
           <p className="leading-normal capitalize font-medium text-[14px] text-white">Available for work</p>
         </div>
       </div>

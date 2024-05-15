@@ -2,6 +2,7 @@ import { Inter, Poppins, Open_Sans } from "next/font/google";
 import NavigationMenu from "./components/NavigationMenu";
 import 'tailwindcss/tailwind.css';
 import "./globals.css";
+import EmbedChatbot from "./components/EmbedChatbot";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] })
@@ -15,8 +16,9 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <body className={`bg-gray-950 w-screen px-4 sm:px-9 ${poppins.className}`}>
-        <NavigationMenu />
         <main>
+          <NavigationMenu />
+          <EmbedChatbot />
           {children}
         </main>
       </body>

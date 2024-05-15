@@ -33,3 +33,13 @@
     display: inline-block;
     animation: 5s slide infinite linear;
 }
+
+.menu-button {
+    transition: transform 0.3s ease;
+    /* Example transition on transform property with 0.3s duration */
+}
+
+.menu-button:hover {
+    transform: scale(1.1);
+    /* Example transformation on hover */
+}
