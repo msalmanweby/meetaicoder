@@ -33,7 +33,7 @@ const EmbedChatbot = () => {
     }
 
     const submitRequest = async () => {
-        const response = await fetch('https://13.60.87.36:8000/info/api/QueryBot/', {
+        const response = await fetch('http://13.60.87.36:8000/info/api/QueryBot/', {
             method: 'POST', // or 'PUT', 'DELETE', etc.
             headers: {
                 'Content-Type': 'application/json'
