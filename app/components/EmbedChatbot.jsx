@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Bot, SendHorizontal } from 'lucide-react';
 import Image from 'next/image';
 import { CircleX } from 'lucide-react';
@@ -10,6 +10,8 @@ const EmbedChatbot = () => {
     const [message, setMessage] = useState('')
 
     const [response, setResponse] = useState([])
+    const containerRef = useRef(null);
+
 
     const handleClick = () => {
         setOpen(!isOpen)
@@ -29,6 +31,13 @@ const EmbedChatbot = () => {
         };
     }, [isOpen]);
 
+    useEffect(() => {
+        // Scroll to the bottom of the container when the component updates
+        if (containerRef.current) {
+            containerRef.current.scrollTop = containerRef.current.scrollHeight;
+        }
+    }, [response]);
+
     const handleMessage = (e) => {
         setMessage(e.target.value)
     }
@@ -45,6 +54,7 @@ const EmbedChatbot = () => {
             },
             body: JSON.stringify({ question: input }),
         });
+
 
         const responseData = await response.json();
 
@@ -68,11 +78,11 @@ const EmbedChatbot = () => {
 
                 <CircleX className='text-white' onClick={handleClick} />
                 <div className='flex flex-col justify-between gap-2 w-full h-full'>
-                    <div className="flex flex-col gap-2 h-full w-full p-4 bg-transparent text-white text-sm rounded-xl border-2 border-white">
+                    <div className="flex flex-col gap-2 h-full w-full p-4 bg-transparent text-white text-sm rounded-xl   overflow-y-auto">
                         {response.map((item, index) => (
-                            <div key={index}>
-                                <p>{item.input}</p>
-                                <p>{item.response}</p>
+                            <div className='flex flex-col gap-2' key={index}>
+                                <p className='flex justify-start p-2 text-sm'>{item.input}</p>
+                                <p className='flex justify-end  p-2 text-sm'>{item.response}</p>
                             </div>
                         ))}
 
