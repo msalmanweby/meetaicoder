@@ -50,7 +50,7 @@ function NavigationMenu() {
     }, [isOpen]);
 
     return (
-        <nav className='flex top-0 sticky bg-gray-950  py-2 justify-between items-center '>
+        <nav className='flex top-0 sticky bg-gray-950 sm:px-8 px-2 py-2 justify-between items-center '>
             <div className='flex flex-row gap-4 '>
                 <Link href={"/"}>
                     <Image src="/logo.svg" width={264} height={36} alt='Meet-Ai Coder' />
@@ -83,7 +83,7 @@ function NavigationMenu() {
                 </div>
             </div>
 
-            <div className='hidden sm:flex gap-7'>
+            <div className='hidden sm:flex sm:gap-7'>
                 {MenuItems.map((item, index) => (
 
                     <Link className={`p-2 justify-center items-center text-white text-sm font-semibold ${item.isContact ? " rounded-lg border-transparent bg-gradient-to-r from-orange-500 to-red-500" : "bg-none"} ${pathname === item.href ? "border-b-2 border-orange-500" : ''}`} key={index} href={item.href}>{item.title}</Link>

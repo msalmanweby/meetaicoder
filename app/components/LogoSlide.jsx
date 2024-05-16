@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
+
 const LogoSlide = () => {
     const brands = [
         { src: "/brands/aws.svg", alt: "aws", width: 66.89 },

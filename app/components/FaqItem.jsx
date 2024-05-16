@@ -14,7 +14,7 @@ function FaqItem({ question, answer }) {
             <button className='flex text-white text-sm font-bold justify-between items-center' onClick={toggleOpen}>
                 {question} {isOpen ? <Minus /> : <Plus />}
             </button>
-            {isOpen && <p className='text-white text-sm py-2'>{answer}</p>}
+            {isOpen && <p className='text-white text-sm py-2 max-w-[280px] mx-auto'>{answer}</p>}
         </div>
     );
 }
@@ -28,11 +28,11 @@ function Faq() {
     ];
 
     return (
-        <>
+        <div className=''>
             {FAQS.map((item, index) => (
                 <FaqItem key={index} question={item.question} answer={item.answer} />
             ))}
-        </>
+        </div>
     );
 }
 

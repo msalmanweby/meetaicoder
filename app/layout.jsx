@@ -3,6 +3,7 @@ import NavigationMenu from "./components/NavigationMenu";
 import 'tailwindcss/tailwind.css';
 import "./globals.css";
 import EmbedChatbot from "./components/EmbedChatbot";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] })
@@ -15,11 +16,12 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <html lang="en">
-      <body className={`bg-gray-950 w-screen px-4 sm:px-9 ${poppins.className}`}>
+      <body className={`bg-gray-950 w-screen${poppins.className}`}>
         <main>
           <NavigationMenu />
           <EmbedChatbot />
           {children}
+          <Footer />
         </main>
       </body>
     </html>
