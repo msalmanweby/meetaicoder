@@ -4,6 +4,7 @@ import LogoSlide from "./components/LogoSlide";
 import FaqItem from "./components/FaqItem";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
+import AvailableComponent from "./components/AvailableComponent";
 
 import { Circle } from 'lucide-react';
 export default function Home() {
@@ -26,10 +27,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
 
-      <div className="flex flex-row gap-2 justify-center items-center p-2 sm:p-4">
-        <Image src='/online.svg' width={8} height={8} alt="Meet-AI coder available" />
-        <p className="leading-normal capitalize font-medium text-[14px] text-white">Available for work</p>
-      </div>
+      <AvailableComponent />
 
 
       <div className="flex flex-col gap-2 px-4 py-2 items-center justify-center">

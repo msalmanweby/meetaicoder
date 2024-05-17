@@ -1,0 +1,16 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="10131923_login_half_circle_line_icon 1">
+<path id="Vector" d="M25.0002 20L18.3335 13.3334M25.0002 20L18.3335 26.6667M25.0002 20H8.3335" stroke="url(#paint0_linear_301_390)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M16.6665 35C24.9508 35 31.6665 28.2843 31.6665 20C31.6665 11.7157 24.9508 5 16.6665 5" stroke="url(#paint1_linear_301_390)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_301_390" x1="25.0002" y1="20" x2="7.5835" y2="20" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F97316"/>
+<stop offset="1" stop-color="#EF4444"/>
+</linearGradient>
+<linearGradient id="paint1_linear_301_390" x1="31.6665" y1="20" x2="15.9915" y2="20" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F97316"/>
+<stop offset="1" stop-color="#EF4444"/>
+</linearGradient>
+</defs>
+</svg>

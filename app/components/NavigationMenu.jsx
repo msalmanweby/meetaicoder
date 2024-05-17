@@ -50,7 +50,7 @@ function NavigationMenu() {
     }, [isOpen]);
 
     return (
-        <nav className='flex top-0 sticky bg-gray-950 sm:px-8 px-2 py-2 justify-between items-center '>
+        <nav className='flex top-0 sticky bg-gray-950 sm:px-8 px-2 py-2 justify-between items-center z-20'>
             <div className='flex flex-row gap-4 '>
                 <Link href={"/"}>
                     <Image src="/logo.svg" width={264} height={36} alt='Meet-Ai Coder' />
@@ -66,7 +66,7 @@ function NavigationMenu() {
             </button>
             <div className={
                 isOpen
-                    ? "fixed left-0 top-0 min-w-[70%] sm:hidden min-h-screen bg-gray-500 p-10 bg-opacity-50 ease-out duration-500 backdrop-blur-lg"
+                    ? "fixed left-0 top-0 min-w-[70%] sm:hidden min-h-screen bg-gray-500 p-10 bg-opacity-50 ease-out duration-500 backdrop-blur-lg z-50"
                     : "fixed left-[-100%] min-h-screen top-0 p-10 ease-in duration-75"
             }>
                 <div className='flex flex-col'>

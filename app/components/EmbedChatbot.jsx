@@ -72,8 +72,8 @@ const EmbedChatbot = () => {
             </div>
             <div className={
                 isOpen
-                    ? "fixed flex flex-col items-end gap-4 right-0 bottom-0 w-full sm:hidden h-full bg-gray-500 p-10 ease-out duration-500 bg-opacity-50 backdrop-blur-lg"
-                    : "fixed flex flex-col items-end right-[-100%] w-full h-full bottom-0 p-10 ease-in duration-500"
+                    ? "fixed flex flex-col items-end gap-4 right-0 bottom-0 w-full sm:hidden h-full bg-gray-500 p-10 ease-out duration-500 bg-opacity-50 backdrop-blur-lg z-50"
+                    : "fixed flex flex-col items-end right-[-100%] w-full h-full bottom-0 p-10 ease-in duration-500 z-50"
             }>
 
                 <CircleX className='text-white' onClick={handleClick} />
