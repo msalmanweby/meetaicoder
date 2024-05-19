@@ -18,10 +18,7 @@ function NavigationMenu() {
             href: "/services", title: "Services", isContct: false
 
         },
-        {
-            href: "/blogs", title: "Blogs", isContct: false
 
-        },
         {
             href: "/contact", title: "Contact", isContact: true
 

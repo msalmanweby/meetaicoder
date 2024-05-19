@@ -47,7 +47,7 @@ function page() {
                         {"Whether it's refining your app's user interface, optimizing backend processes, or exploring innovative AI integrations, our conversation is tailored to uncovering the precise solutions your projects demand. Together, we'll navigate through the intricacies of your goals, ensuring every aspect aligns seamlessly with your vision and objectives. So, let's embark on this journey, leveraging technology to transform your ideas into impactful realities."}
                     </p>
                 </div>
-                <Button type={"action"} value={"Contact Us"} />
+                <Button type={"action"} value={"Contact Us"} link={'/contact'} />
             </div>
 
         </div>

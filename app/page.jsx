@@ -38,8 +38,8 @@ export default function Home() {
 
 
       <div className="flex items-center justify-center gap-6 p-6 mb-6">
-        <Button value="Request Demo" type="action" />
-        <Button value="Learn More" type="info" />
+        <Button value="Request Demo" type="action" link={"/"} />
+        <Button value="Learn More" type="info" link={'/about'} />
       </div>
 
       <div className=" bg-white h-[0.2px] mx-[5%] sm:mx-[5%] md:mx-[5%] lg:mx-[7%] xl:mx-[15%] 2xl:mx-[19%] mt-6"></div>
@@ -69,7 +69,7 @@ export default function Home() {
 
       </div>
       <div className="flex p-4 items-center justify-center gap-6">
-        <Button value="Checkout Services" type="action" />
+        <Button value="Checkout Services" type="action" link={'/services'} />
       </div>
 
       <div className="flex flex-col md:flex-row justify-center items-center md:items-start p-4 gap-4 mt-4 mb-4">
