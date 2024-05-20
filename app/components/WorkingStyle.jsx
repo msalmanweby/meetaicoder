@@ -16,6 +16,7 @@ function WorkingStyle({ number, heading, detail }) {
             </div>
             <div className="flex">
                 <p className='text-white font-normal text-[14px] w-60 capitalize'>
+
                     {detail}
                 </p>
             </div>
