@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Button from '../components/Button'
 import Testimonials from '../components/Testimonials'
 import LatestProjects from '../components/LatestProjects'
+import HeroBanner from '../components/HeroBanner'
 
 
 function page() {
@@ -16,11 +17,9 @@ function page() {
     ]
 
     return (
-        <div className=''>
-            <div className="flex bg-[url('/about/Hero.jpg')] bg-cover bg-center items-center justify-center h-[286px] lg:h-screen w-full">
+        <div>
+            <HeroBanner first={'Transform'} mid={"With"} last={"Innovation"} pargragraph={"Explore our digital services, Boost your online presenece"} url={"/about/Hero.jpg"} />
 
-                <p className='text-center text-white text-[20px] lg:text-[32px] font-bold drop-shadow-[0_4px_4px_rgba(0,0,0,50)] capitalize'>Welcome To Meet AI Coders, Where Innovation Transforms Businesses</p>
-            </div>
             <div className='flex flex-col items-center justify-center text-white text-center gap-4 py-20'>
                 <div className='flex text-white text-center text-[18px] lg:text-[24px] font-bold'>
                     <h1 className='capitalize'>Imagine a future where technology Helps!</h1>

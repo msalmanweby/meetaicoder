@@ -2,6 +2,8 @@ import React from 'react'
 import ContactForm from '../components/ContactForm'
 import Image from 'next/image'
 import ContactCard from '../components/ContactCard'
+import HeroBanner from '../components/HeroBanner'
+
 
 export default function page() {
     const contactCard = [
@@ -23,16 +25,8 @@ export default function page() {
     ]
     return (
         <div>
-            <div className="flex flex-col bg-[url('/contact/Hero.jpg')] bg-cover bg-center h-screen items-center justify-center w-full">
-                <div className='flex flex-row gap-2 drop-shadow-[0_4px_4px_rgba(0,0,0,50)]'>
+            <HeroBanner first={'Contact'} mid={"Meet-Ai"} last={"Coders"} pargragraph={"Explore our digital services, Boost your online presenece"} url={"/contact/Hero.jpg"} />
 
-                    <h1 className='text-[24px] sm:text-[32px] font-bold capitalize bg-gradient-to-l from-orange-500 to-red-500 inline-block text-transparent bg-clip-text'>Contact</h1>
-                    <h1 className='text-[24px] sm:text-[32px] font-bold capitalize text-white inline-block text-transparent bg-clip-text'>Meet-Ai Coders</h1>
-                </div>
-                <div className="flex flex-row text-[14px] sm:text-[20px] font-normal text-center text-white drop-shadow-[0_4px_4px_rgba(0,0,0,50)] capitalize">
-                    <p>Explore our digital services, Boost your online presenece </p>
-                </div>
-            </div>
             <div className="flex flex-col gap-4 justify-center items-center py-10">
                 <h1 className='text-white text-[24px] sm:text-[32px] font-bold capitalize'>
                     {"Let's Talk with us"}

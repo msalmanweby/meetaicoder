@@ -16,7 +16,7 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <html lang="en">
-      <body className={`bg-gray-950 w-screen${poppins.className}`}>
+      <body className={`bg-gray-950 no-scrollbar ${poppins.className}`}>
         <main>
           <NavigationMenu />
           <EmbedChatbot />
