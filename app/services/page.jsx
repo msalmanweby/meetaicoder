@@ -9,7 +9,6 @@ export default function page() {
     return (
         <div className='flex flex-col items-center text-center'>
             <HeroBanner first={'creative'} mid={"saas"} last={"agency"} pargragraph={"Explore our digital services, Boost your online presenece"} url={"/services/Hero.jpg"} />
-
             <div className="flex w-full">
                 <div className="flex items-center justify-between w-full px-2 py-4 sm:p-8">
                     <h1 className='text-white font-bold text-[20px] lg:text-[24px] capitalize'>Our Services</h1>
@@ -27,6 +26,7 @@ export default function page() {
                     <WorkingStyle number={"02"} heading={"Making Appointment"} detail={"Describe Your problem the way you prefered and provide any supporting documents (if any)"} />
                     <Image className='rotate-90 xl:rotate-0' src={'/services/rotated-arrow.svg'} width={230} height={230} alt='How meet-ai coders work' />
                     <WorkingStyle number={"03"} heading={"Consulting Developer"} detail={"Consult with a developer and discuss the full idea and concept"} />
+
 
                 </div>
             </div>
