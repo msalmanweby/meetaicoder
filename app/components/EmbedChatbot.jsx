@@ -4,12 +4,13 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Bot, SendHorizontal } from 'lucide-react';
 import Image from 'next/image';
 import { CircleX } from 'lucide-react';
+import baseUrl from './UrlPatterns';
+import Link from 'next/link';
 
 const EmbedChatbot = () => {
     const [isOpen, setOpen] = useState(false)
     const [message, setMessage] = useState('')
-
-    const [response, setResponse] = useState([])
+    const [chatHistory, setChatHistory] = useState([]);
     const containerRef = useRef(null);
 
 
@@ -32,36 +33,49 @@ const EmbedChatbot = () => {
     }, [isOpen]);
 
     useEffect(() => {
-        // Scroll to the bottom of the container when the component updates
         if (containerRef.current) {
             containerRef.current.scrollTop = containerRef.current.scrollHeight;
         }
-    }, [response]);
+    }, [chatHistory]);
+
 
     const handleMessage = (e) => {
         setMessage(e.target.value)
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            // Call your function here
+            // For example:
+            // yourFunction(message);
+            submitRequest()
+            // You can prevent the default behavior (e.g., form submission) if needed
+            event.preventDefault();
+        }
+    };
+
     const submitRequest = async () => {
-        const input = message
+        const inputQuery = message;
+        const newChatItem = { query: inputQuery, response: '' };
+        setChatHistory([...chatHistory, newChatItem]);
         setMessage('')
-        setMessage('')
-        const response = await fetch('https://meetaicoders.com/info/api/QueryBot/', {
+        const response = await fetch(`${baseUrl}info/queryBot/`, {
             method: 'POST', // or 'PUT', 'DELETE', etc.
             headers: {
                 'Content-Type': 'application/json'
                 // You may need to include other headers like authorization token
             },
-            body: JSON.stringify({ question: input }),
+            body: JSON.stringify({ query: inputQuery }),
         });
-
 
         const responseData = await response.json();
 
         if (response.status === 200) {
-            setResponse(prevResponse => [...prevResponse, { input: input, response: responseData }]);
+            newChatItem.response = responseData;
+            setChatHistory([...chatHistory, newChatItem]);
         } else {
-            setResponse([{ input: input, response: "Some error occurred" }]);
+            newChatItem.response = "Some error occurred";
+            setChatHistory([...chatHistory]); // Update chat history with error response
         }
     }
     return (
@@ -72,29 +86,61 @@ const EmbedChatbot = () => {
             </div>
             <div className={
                 isOpen
-                    ? "fixed flex flex-col items-end gap-4 right-0 bottom-0 w-full sm:hidden h-full bg-gray-500 p-10 ease-out duration-500 bg-opacity-50 backdrop-blur-lg z-50"
-                    : "fixed flex flex-col items-end right-[-100%] w-full h-full bottom-0 p-10 ease-in duration-500 z-50"
+                    ? "fixed flex flex-col items-start justify-center gap-8 right-0 bottom-0 w-full h-full bg-gray-500 p-4 sm:p-8 ease-out duration-700 bg-opacity-50 backdrop-blur-lg z-[9999]"
+                    : "fixed flex flex-col items-start justify-center right-[-100%] w-full h-full bottom-0 p-4 sm:p-8 gap-8 ease-in duration-700 z-[9999]"
             }>
+                <div className='flex w-full justify-between items-center'>
 
-                <CircleX className='text-white' onClick={handleClick} />
-                <div className='flex flex-col justify-between gap-2 w-full h-full'>
-                    <div className="flex flex-col gap-2 h-full w-full p-4 bg-transparent text-white text-sm rounded-xl   overflow-y-auto">
-                        {response.map((item, index) => (
-                            <div className='flex flex-col gap-2' key={index}>
-                                <p className='flex justify-start p-2 text-sm'>{item.input}</p>
-                                <p className='flex justify-end  p-2 text-sm'>{item.response}</p>
-                            </div>
-                        ))}
+                    <Link href={"/"}>
+                        <Image src="/logo.svg" width={264} height={36} alt='Meet-Ai Coder' />
+                    </Link>
 
-                    </div>
-                    <div className='flex justify-between gap-2 p-2 rounded-xl border-2 border-white'>
-                        <input type="text" id='message' placeholder='Enter Your Message Here' onChange={handleMessage} value={message} className={`flex w-full p-2  text-sm text-white bg-transparent h-auto focus:outline-none ${!isOpen ? "scale-0" : ""}`} />
-                        <button className=" p-2 rounded-full bg-gray-950" onClick={submitRequest}>
-                            <SendHorizontal className='text-white' />
-                        </button>
-                    </div>
+
+
+                    <CircleX className='text-white w-8 h-8' onClick={handleClick} />
 
                 </div>
+                <div className="flex flex-col h-full w-full p-8 gap-8 overflow-y-auto no-scrollbar scroll-smooth transition-all duration-700 text-[14px] sm:text-[16px] font-medium" ref={containerRef}>
+                    {chatHistory.map((chatItem, index) => (
+                        <React.Fragment key={index}>
+                            <div className="flex items-center justify-end">
+                                <div className="flex p-2 justify-center items-center bg-gradient-to-r from-orange-500 to-red-500 rounded-lg shadow-lg shadow-orange-500/50 text-white">
+                                    {chatItem.query}
+                                </div>
+                            </div>
+                            {chatItem.response && (
+                                <div className="flex items-center justify-start">
+                                    <div className="flex p-2 justify-center items-center text-white">
+                                        {chatItem.response}
+                                    </div>
+                                </div>
+                            )}
+                        </React.Fragment>
+                    ))}
+                </div>
+                <div className="flex border-2 border-gray-500 w-full h-20 rounded-full px-4 sm:px-8 justify-between items-center">
+                    <div className="flex flex-grow">
+                        <input
+                            className="w-full bg-transparent outline-none placeholder-gray-400 text-white text-[14px] sm:text-[16px] font-medium"
+                            type="text"
+                            placeholder="Ask MeetAI Coders Agent"
+                            onChange={handleMessage}
+                            value={message}
+                            onKeyDown={handleKeyDown}
+                        />
+                    </div>
+                    <div className="flex gap-8">
+                        {/* <button onClick={submitRequest}>
+
+                            <Image src={'/microphone.svg'} width={32} height={32} alt='message meetai coders' />
+                        </button> */}
+                        <button onClick={submitRequest}>
+
+                            <Image className='w-6 h-6 sm:w-8 sm:h-8' src={'/send_icon.svg'} width={32} height={32} alt='message meetai coders' />
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div >
     )

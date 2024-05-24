@@ -18,7 +18,10 @@ function NavigationMenu() {
             href: "/services", title: "Services", isContct: false
 
         },
+        {
+            href: "/requestdemo", title: "Request Demo", isContact: false
 
+        },
         {
             href: "/contact", title: "Contact", isContact: true
 
@@ -47,7 +50,7 @@ function NavigationMenu() {
     }, [isOpen]);
 
     return (
-        <nav className='flex top-0 sticky bg-gray-950 sm:px-8 px-2 py-2 justify-between items-center z-20'>
+        <nav className='flex top-0 sticky bg-gray-950 sm:px-8 px-2 py-2 justify-between items-center z-50'>
             <div className='flex flex-row gap-4 '>
                 <Link href={"/"}>
                     <Image src="/logo.svg" width={264} height={36} alt='Meet-Ai Coder' />

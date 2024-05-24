@@ -12,7 +12,7 @@ export default function page() {
             <div className="flex w-full">
                 <div className="flex items-center justify-between w-full px-2 py-4 sm:p-8">
                     <h1 className='text-white font-bold text-[20px] lg:text-[24px] capitalize'>Our Services</h1>
-                    <Button type={"action"} value={"Request Demo"} />
+                    <Button type={"action"} value={"Request Demo"} link={'/requestdemo'} />
                 </div>
             </div>
             <ServiceCard showAll={true} />
@@ -33,3 +33,6 @@ export default function page() {
         </div>
     )
 }
+
+
+

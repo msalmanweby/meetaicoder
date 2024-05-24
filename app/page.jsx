@@ -5,6 +5,7 @@ import AvailableComponent from "./components/AvailableComponent";
 import HeroBanner from "./components/HeroBanner";
 import ServiceCard from "./components/ServiceCard";
 import Faq from "./components/FaqItem";
+import Notify from "./components/Notify";
 
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
 
   return (
     <div>
-
+      <Notify />
       <HeroBanner first={'Meet'} mid={"AI"} last={"Coders"} pargragraph={"Explore our digital services, Boost your online presenece"} url={"/bg.jpg"} />
 
 
@@ -29,7 +30,7 @@ export default function Home() {
 
       <AvailableComponent />
       <div className="flex items-center justify-center gap-6 p-6 mb-6">
-        <Button value="Request Demo" type="action" link={"/"} />
+        <Button value="Request Demo" type="action" link={"/requestdemo"} />
         <Button value="Learn More" type="info" link={'/about'} />
       </div>
 
@@ -66,7 +67,7 @@ export default function Home() {
             <div>
               <div className="flex gap-4 p-2">
                 <span><Image src={'/email.svg'} width={24} height={24} alt="email" /></span>
-                <span> salman@meetaicoder.com
+                <span> info@meetaicoders.com
                 </span>
               </div>
               <div className="flex gap-4 p-2  ">

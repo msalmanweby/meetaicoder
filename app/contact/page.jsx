@@ -3,6 +3,7 @@ import ContactForm from '../components/ContactForm'
 import Image from 'next/image'
 import ContactCard from '../components/ContactCard'
 import HeroBanner from '../components/HeroBanner'
+import Notify from '../components/Notify'
 
 
 export default function page() {
@@ -10,21 +11,25 @@ export default function page() {
         {
             image: "/contact/img1.svg",
             heading: "Customizing Software Solutions",
-            content: "We create individual tailored software that meets the unique need for our client "
+            content: "We create individual tailored software that meets the unique need for our client ",
+            alt: "Expertise in the Latest Technologies"
         },
         {
             image: "/contact/img2.svg",
             heading: "Expertise in the Latest Technologies",
-            content: "Our Team of developers have deep knowledge and Experience in the latest Technologies"
+            content: "Our Team of developers have deep knowledge and Experience in the latest Technologies",
+            alt: "Expertise in the Latest Technologies"
         },
         {
             image: "/contact/img3.svg",
             heading: "Support and Maintenance",
-            content: "We Do not stop our work after implementing the solution, we provide continuous support and maintenance"
+            content: "We Do not stop our work after implementing the solution, we provide continuous support and maintenance",
+            alt: "Support and Maintenance"
         },
     ]
     return (
         <div>
+            <Notify />
             <HeroBanner first={'Contact'} mid={"Meet-Ai"} last={"Coders"} pargragraph={"Explore our digital services, Boost your online presenece"} url={"/contact/Hero.jpg"} />
 
             <div className="flex flex-col gap-4 justify-center items-center py-10">
@@ -46,10 +51,10 @@ export default function page() {
                         <div className='grid mx-auto gap-2 lg:items-start lg:mx-0'>
                             <div className="flex items-center  gap-4">
                                 <span><Image src={'/email.svg'} width={24} height={24} alt="email" /></span>
-                                <span className='text-[14px] text-white font-medium'>msalman@meetaicoders.com</span>
+                                <span className='text-[14px] text-white font-medium'>info@meetaicoders.com</span>
                             </div>
                             <div className="flex items-center  gap-4 ">
-                                <span><Image src={'/phone.svg'} width={24} height={24} alt="email" /></span>
+                                <span><Image src={'/phone.svg'} width={24} height={24} alt="phone" /></span>
                                 <span className='text-[14px] text-white font-medium'>+1 (251) 451-4289</span>
                             </div>
                         </div>
@@ -57,7 +62,7 @@ export default function page() {
                     </div>
                     <div className="flex flex-col gap-4 p-4 bg-gray-800 rounded-[20px]">
                         {contactCard.map((item, index) => (
-                            <ContactCard key={index} image={item.image} heading={item.heading} content={item.content} />
+                            <ContactCard key={index} image={item.image} heading={item.heading} content={item.content} alttext={item.alt} />
                         ))}
 
                     </div>

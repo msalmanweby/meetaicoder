@@ -6,7 +6,7 @@ import LatestProjects from '../components/LatestProjects'
 import HeroBanner from '../components/HeroBanner'
 
 
-function page() {
+export default function page() {
 
     const myTestimnials = [
         { score: "100%", title: "Client Satifaction" },
@@ -55,4 +55,3 @@ function page() {
     )
 }
 
-export default page

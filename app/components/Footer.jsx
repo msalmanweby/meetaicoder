@@ -74,7 +74,7 @@ function Footer() {
 
       </div>
       <div className="flex items-center justify-center text-white text-sm font-semibold">
-        <p>© 2024 Meet-AI Coder. All rights reserved.</p>
+        <p>© 2024 Meet-AI Coders. All rights reserved.</p>
       </div>
     </div>
   )
