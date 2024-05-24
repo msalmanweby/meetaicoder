@@ -42,8 +42,6 @@ function DemoForm() {
         setPhone(e.target.value)
     }
 
-
-
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
@@ -80,11 +78,35 @@ function DemoForm() {
         setFormCheck(!formCheck)
     }
 
+    const handleSpacePressed = (event) => {
+        if (event.key === ' ') {
+            setOpen(!open)
+            event.preventDefault();
+        }
+    };
+
+    const handleSpaceCheckedSingle = (event) => {
+        if (event.key === ' ') {
+            setFormCheck(!formCheck)
+            event.preventDefault();
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (!isValidEmail(email)) {
             dispatch(setNotificationMessage({ message: "Invalid Email", isError: true }));
+            return;
+        }
+
+        if (!formCheck) {
+            dispatch(setNotificationMessage({ message: "You must agree to the terms and conditions", isError: true }));
+            return;
+        }
+
+        if (selectedServices.length === 0) {
+            dispatch(setNotificationMessage({ message: "Choose Category", isError: true }));
             return;
         }
 
@@ -102,6 +124,9 @@ function DemoForm() {
         setEmail('')
         setPhone('')
         setSelectedServices([])
+        setCheckedItems({})
+        setFormCheck(!formCheck)
+        setOpen(!open)
         const response = await fetch(`${baseUrl}info/requestDemo/`, {
             method: 'POST',
             headers: {
@@ -159,9 +184,9 @@ function DemoForm() {
                     ) : (
                         <p className='text-gray-700'>Select Categories</p>
                     )}
-                    <div className="flex">
+                    <button onKeyDown={handleSpacePressed} type="button" className="flex">
                         <ChevronDown className={`${open ? "rotate-180 ease-in-out duration-500 cursor-pointer" : "ease-in-out duration-500 cursor-pointer"}`} size={24} onClick={handledropDown} />
-                    </div>
+                    </button>
                 </div>
                 <div className={`overflow-hidden transition-max-height duration-500 ease-in-out no-scrollbar ${open ? 'max-h-64 overflow-y-auto' : 'max-h-0'}`}>
                     <ul className="flex flex-col">
@@ -181,9 +206,9 @@ function DemoForm() {
             </div>
 
             <div className="flex gap-2 tex-[14px] items-start">
-                <div className='flex shrink-0 cursor-pointer' onClick={handleFormCheck}>
+                <button onKeyDown={handleSpaceCheckedSingle} type="button" className='flex shrink-0 cursor-pointer' onClick={handleFormCheck}>
                     {formCheck ? <Image src={"/requestdemo/checkboxFill.svg"} width={24} height={24} alt='checkbox-fill' /> : <Image src={"/requestdemo/checkbox.svg"} width={24} height={24} alt='uncheck-checkbox' />}
-                </div>
+                </button>
                 <div className="flex gap-1 text-white">
                     <span>I have read and agree to meetaicoders.com <Link className="bg-gradient-to-l from-orange-500 to-red-500 inline-block text-transparent bg-clip-text" href={'/legal-terms'}>Legal Terms</Link> and <Link className="bg-gradient-to-l from-orange-500 to-red-500 inline-block text-transparent bg-clip-text" href={'/privacy-policy'}>Privacy Policy.</Link>
                     </span>

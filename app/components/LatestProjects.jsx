@@ -25,26 +25,7 @@ function LatestProjects() {
             content: "Avapay leverages advanced AI algorithms to dynamically manage user costs, ensuring optimal spending while maximizing value. By analyzing user behavior, preferences, and consumption patterns in real-time.",
 
             status: "Pending"
-        },
-        {
-            name: "unity",
-            content: "A Multi-purposed Dashboard designed to streamline workflows, optimize data visualization, and empower informed decision-making across diverse projects and functionalities.",
-
-            status: "Delivered"
-        },
-        {
-            name: "cascanio",
-            content: "An AI-Enabled Gaming Platform engineered to enhance gaming experiences, optimize strategic decision-making, and elevate performance across diverse game genres and functionalities",
-
-            status: "Delivered"
-        },
-        {
-            name: "avapay",
-            content: "Avapay leverages advanced AI algorithms to dynamically manage user costs, ensuring optimal spending while maximizing value. By analyzing user behavior, preferences, and consumption patterns in real-time.",
-
-            status: "Pending"
-        },
-        //
+        }
     ]
 
     const handleDelayedScroll = () => {
