@@ -12,6 +12,7 @@ const EmbedChatbot = () => {
     const [message, setMessage] = useState('')
     const [chatHistory, setChatHistory] = useState([]);
     const containerRef = useRef(null);
+    const [sessionId, setSessionId] = useState(null)
 
 
     const handleClick = () => {
@@ -31,6 +32,20 @@ const EmbedChatbot = () => {
             document.body.style.overflow = 'auto';
         };
     }, [isOpen]);
+
+    function generateSessionId(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let sessionId = '';
+        for (let i = 0; i < length; i++) {
+            sessionId += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return sessionId;
+    }
+
+    useEffect(() => {
+        const sessionId = generateSessionId(10)
+        setSessionId(sessionId)
+    }, [])
 
     useEffect(() => {
         if (containerRef.current) {
@@ -58,26 +73,48 @@ const EmbedChatbot = () => {
         const inputQuery = message;
         const newChatItem = { query: inputQuery, response: '' };
         setChatHistory([...chatHistory, newChatItem]);
-        setMessage('')
-        const response = await fetch(`${baseUrl}info/queryBot/`, {
-            method: 'POST', // or 'PUT', 'DELETE', etc.
-            headers: {
-                'Content-Type': 'application/json'
-                // You may need to include other headers like authorization token
-            },
-            body: JSON.stringify({ query: inputQuery }),
-        });
+        setMessage('');
 
-        const responseData = await response.json();
+        try {
+            const response = await fetch(`${baseUrl}info/queryBot/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_input: inputQuery, session_id: sessionId }),
+            });
 
-        if (response.status === 200) {
-            newChatItem.response = responseData;
-            setChatHistory([...chatHistory, newChatItem]);
-        } else {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const reader = response.body.getReader();
+            let receivedText = '';
+
+            while (true) {
+                const { done, value } = await reader.read();
+                // Concatenate the received chunk of text
+                receivedText += new TextDecoder().decode(value);
+                newChatItem.response = receivedText;
+                setChatHistory([...chatHistory, newChatItem]);
+                setTimeout(() => {
+
+                }, 5000);
+
+                if (done) {
+                    break;
+                }
+
+            }
+
+            // Once the stream ends, update chat history with the received text
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
             newChatItem.response = "Some error occurred";
-            setChatHistory([...chatHistory]); // Update chat history with error response
+            setChatHistory([...chatHistory, newChatItem]); // Update chat history with error response
         }
-    }
+    };
     return (
         <div>
             <div className={`fixed bottom-20 right-10 p-5 z-[9999] cursor-pointer ${isOpen ? "scale-0" : ""}`}>
