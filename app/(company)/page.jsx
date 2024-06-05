@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Button from "./components/Button";
-import ContactForm from "./components/ContactForm";
-import AvailableComponent from "./components/AvailableComponent";
-import HeroBanner from "./components/HeroBanner";
-import ServiceCard from "./components/ServiceCard";
-import Faq from "./components/FaqItem";
-import Notify from "./components/Notify";
+import Button from "../components/Button";
+import ContactForm from "../components/ContactForm";
+import AvailableComponent from "../components/AvailableComponent";
+import HeroBanner from "../components/HeroBanner";
+import ServiceCard from "../components/ServiceCard";
+import Faq from "../components/FaqItem";
+import Notify from "../components/Notify";
 
 
 export default function Home() {
@@ -72,7 +72,7 @@ export default function Home() {
               </div>
               <div className="flex gap-4 p-2  ">
                 <span><Image src={'/phone.svg'} width={24} height={24} alt="email" /></span>
-                <span>+1 (251) 451-4289
+                <span>+1 (251) 314-2234
                 </span>
               </div>
             </div>

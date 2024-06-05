@@ -1,7 +1,7 @@
-import DemoForm from "../components/DemoForm"
-import HeroBanner from "../components/HeroBanner"
+import DemoForm from "../../components/DemoForm"
+import HeroBanner from "../../components/HeroBanner"
 import Image from "next/image"
-import Notify from "../components/Notify"
+import Notify from "../../components/Notify"
 
 export default function page() {
     return (

@@ -1,9 +1,9 @@
 import React from 'react'
-import ContactForm from '../components/ContactForm'
+import ContactForm from '../../components/ContactForm'
 import Image from 'next/image'
-import ContactCard from '../components/ContactCard'
-import HeroBanner from '../components/HeroBanner'
-import Notify from '../components/Notify'
+import ContactCard from '../../components/ContactCard'
+import HeroBanner from '../../components/HeroBanner'
+import Notify from '../../components/Notify'
 
 
 export default function page() {
@@ -55,7 +55,7 @@ export default function page() {
                             </div>
                             <div className="flex items-center  gap-4 ">
                                 <span><Image src={'/phone.svg'} width={24} height={24} alt="phone" /></span>
-                                <span className='text-[14px] text-white font-medium'>+1 (251) 451-4289</span>
+                                <span className='text-[14px] text-white font-medium'>+1 (251) 314-2234</span>
                             </div>
                         </div>
 

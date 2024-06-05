@@ -11,22 +11,22 @@ export const services = [
     },
     {
         name: "Medical And Healthcare Agents",
-        content: "Unlock the power of self-hosted Learning Management Systems (LMS) to create engaging, interactive learning experiences for your employees or clients.",
+        content: "virtual assistants for medical and healthcare sectors. They assist with patient inquiries, offer guidance on health issues, and provide relevant medical information.",
         image: "/services/1.jpg"
     },
     {
         name: "Virtual Travel Booking Agents",
-        content: "Unlock the power of self-hosted Learning Management Systems (LMS) to create engaging, interactive learning experiences for your employees or clients.",
+        content: "chatbots for travel bookings. They assist with itinerary planning, booking flights, hotels, and other travel arrangements, and provide relevant travel information and recommendations.",
         image: "/services/2.jpg"
     },
     {
         name: "Automated Financial Investing Agents",
-        content: "Unlock the power of self-hosted Learning Management Systems (LMS) to create engaging, interactive learning experiences for your employees or clients.",
+        content: "Specialized chatbots for financial investment tasks. They handle common queries, offer investment advice, and provide relevant financial information to users.",
         image: "/services/3.jpg"
     },
     {
         name: "Legal Document Review Agents",
-        content: "LLM-based applications that analyze legal documents, contracts, and agreements. These agents can help identify relevant clauses, potential risks, and legal implications.",
+        content: "chatbots for legal document scrutiny. They assist in reviewing legal documents, identifying key points, and providing relevant information and recommendations based on legal standards and requirements.",
         image: "/services/4.jpg"
     },
     {

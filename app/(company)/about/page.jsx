@@ -1,9 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
-import Button from '../components/Button'
-import Testimonials from '../components/Testimonials'
-import LatestProjects from '../components/LatestProjects'
-import HeroBanner from '../components/HeroBanner'
+import Button from '../../components/Button'
+import Testimonials from '../../components/Testimonials'
+import LatestProjects from '../../components/LatestProjects'
+import HeroBanner from '../../components/HeroBanner'
 
 
 export default function page() {

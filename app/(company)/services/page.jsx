@@ -1,9 +1,9 @@
 import React from 'react'
-import ServiceCard from '../components/ServiceCard'
-import Button from '../components/Button'
-import WorkingStyle from '../components/WorkingStyle'
+import ServiceCard from '../../components/ServiceCard'
+import Button from '../../components/Button'
+import WorkingStyle from '../../components/WorkingStyle'
 import Image from 'next/image'
-import HeroBanner from '../components/HeroBanner'
+import HeroBanner from '../../components/HeroBanner'
 
 export default function page() {
     return (
