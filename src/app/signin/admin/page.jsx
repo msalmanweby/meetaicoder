@@ -1,4 +1,4 @@
-import AdminSignin from "@/app/components/AdminSignin"
+import AdminSignin from "../../components/AdminSignin"
 
 
 export default function page() {
