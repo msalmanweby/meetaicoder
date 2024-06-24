@@ -5,9 +5,19 @@ import ContactInfo from "../../components/quotesForms/ContactInfo";
 import ProgressBar from "../../components/quotesForms/ProgressBar";
 import ProjectInfo from "../../components/quotesForms/ProjectInfo";
 
-function page() {
+function Page() {
   const [progress, setProgress] = useState(0);
   const [contactFilled, setContactFilled] = useState(false);
+
+  const handleSetContactProgress = (contactProgress) => {
+    const totalProgress = contactProgress + (contactFilled ? 50 : 0);
+    setProgress(totalProgress);
+  };
+
+  const handleSetProjectProgress = (projectProgress) => {
+    const totalProgress = projectProgress + 50;
+    setProgress(totalProgress);
+  };
 
   return (
     <div className="flex flex-col w-full py-8 px-4">
@@ -19,10 +29,10 @@ function page() {
       )}
 
       {contactFilled ? (
-        <ProjectInfo setProgress={setProgress} />
+        <ProjectInfo setProgress={handleSetProjectProgress} />
       ) : (
         <ContactInfo
-          setProgress={setProgress}
+          setProgress={handleSetContactProgress}
           setContactFilled={setContactFilled}
         />
       )}
@@ -30,4 +40,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

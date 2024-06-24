@@ -1,8 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "./InputField";
 import SelectProjectCategory from "./SelectProjectCategory";
 import SelectBudget from "./SelectBudget";
+import SelectPreference from "./SelectPreference";
+import FormButton from "./FormButton";
 
 function ProjectInfo({ setProgress }) {
   const [projectName, setProjectName] = useState("");
@@ -10,11 +12,32 @@ function ProjectInfo({ setProgress }) {
   const [link, setLink] = useState("");
   const [budget, setBudget] = useState("");
   const [prefrence, setPreference] = useState("");
-  const [requiredService, serRequiredServices] = useState([]);
+  const [formValid, setFormValid] = useState(false);
+
+  useEffect(() => {
+    const fields = [projectName, projectCategory, link, budget, prefrence];
+    const isFieldFilled = (field) => {
+      if (Array.isArray(field)) {
+        return field.length > 0;
+      } else {
+        return field.trim() !== "";
+      }
+    };
+    const filledFields = fields.filter(isFieldFilled).length;
+    const progress = Math.floor((filledFields / fields.length) * 50);
+    setProgress(progress);
+
+    const isFormValid = filledFields === fields.length;
+    setFormValid(isFormValid);
+  }, [projectName, projectCategory, link, budget, prefrence, setProgress]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div>
-      <form action="" className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <InputField
           label="Project Name"
           placeholder="Project Name"
@@ -29,7 +52,7 @@ function ProjectInfo({ setProgress }) {
         />
         <InputField
           label="Reference Link (If Applicable)"
-          placeholder="Any Refrenece Link"
+          placeholder="Any Reference Link"
           type="text"
           value={link}
           onChange={(e) => setLink(e.target.value)}
@@ -39,6 +62,12 @@ function ProjectInfo({ setProgress }) {
           budget={budget}
           setBudget={setBudget}
         />
+        <SelectPreference
+          label={"Choose Preference"}
+          preference={prefrence}
+          setPreference={setPreference}
+        />
+        <FormButton type={"submit"} text={"Submit"} disabled={!formValid} />
       </form>
     </div>
   );

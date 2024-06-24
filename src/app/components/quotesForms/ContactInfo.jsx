@@ -23,17 +23,14 @@ function ContactInfo({ setProgress, setContactFilled }) {
 
   // Function to check if all required fields are filled
   useEffect(() => {
-    const isFormValid =
-      fname.trim() !== "" &&
-      lname.trim() !== "" &&
-      country.trim() !== "" &&
-      email.trim() !== "" &&
-      phoneNumber.trim() !== "" &&
-      company.trim() !== "";
+    const fields = [fname, lname, country, email, phoneNumber, company];
+    const filledFields = fields.filter((field) => field.trim() !== "").length;
+    const progress = Math.floor((filledFields / fields.length) * 50);
+    setProgress(progress);
 
+    const isFormValid = filledFields === fields.length;
     setFormValid(isFormValid);
-    setProgress(calculateProgress);
-  }, [fname, lname, country, email, phoneNumber, company]);
+  }, [fname, lname, country, email, phoneNumber, company, setProgress]);
 
   // useEffect to fetch all countries
   useEffect(() => {
@@ -57,7 +54,6 @@ function ContactInfo({ setProgress, setContactFilled }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setContactFilled(true);
-    console.log("Contact Filled");
   };
 
   return (

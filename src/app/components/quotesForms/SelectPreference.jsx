@@ -1,22 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { ChevronDownCircle } from "lucide-react";
-import BudgetDropdown from "./BudgetDropdown";
+import PreferencesDropdown from "./PreferencesDropdown";
 
-function SelectBudget({ label, budget, setBudget }) {
+function SelectPreference({ label, preference, setPreference }) {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
-  const allBudgetValues = [
-    "Below $1000",
-    "$1000-$5000",
-    "$5000-$10000",
-    "$10000-$50000",
-    "Undetermined",
-    "Choose Custom",
+  const allPreferences = [
+    {
+      option: "Manage It Myself",
+      benifit: "Full Control",
+      detail: "Take full control of the service setup and management.",
+    },
+    {
+      option: "Managed by Our Team",
+      benifit: "Expert Management",
+      detail: "Let our experts handle the setup and management. ",
+    },
   ];
   return (
     <div className="flex flex-col gap-2">
@@ -27,10 +32,10 @@ function SelectBudget({ label, budget, setBudget }) {
         {label}
       </label>
       <div className="flex justify-between bg-gray-900 p-2 rounded-[10px] border-2 border-gray-800 outline-none text-[14px] font-light text-gray-700 text-start">
-        {budget !== null && budget !== undefined ? (
-          <p className="text-white">{budget}</p>
+        {preference !== "" ? (
+          <p className="text-white">{preference}</p>
         ) : (
-          <p>Select Your Budget</p>
+          <p>Choose Your Preference</p>
         )}
         <ChevronDownCircle
           onClick={handleClick}
@@ -48,12 +53,12 @@ function SelectBudget({ label, budget, setBudget }) {
         }`}
       >
         <div>
-          {allBudgetValues.map((item, index) => (
-            <BudgetDropdown
+          {allPreferences.map((item, index) => (
+            <PreferencesDropdown
               key={index}
               item={item}
-              budget={budget}
-              setBudget={setBudget}
+              preference={preference}
+              setPreference={setPreference}
             />
           ))}
         </div>
@@ -62,4 +67,4 @@ function SelectBudget({ label, budget, setBudget }) {
   );
 }
 
-export default SelectBudget;
+export default SelectPreference;
