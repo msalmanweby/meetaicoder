@@ -4,7 +4,7 @@ import InputField from "./InputField";
 import SelectCountry from "./SelectCountry";
 import FormButton from "./FormButton";
 
-function ContactInfo() {
+function ContactInfo({ setProgress, setContactFilled }) {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [country, setCountry] = useState("");
@@ -14,16 +14,25 @@ function ContactInfo() {
   const [allCountries, setAllCountries] = useState([]);
   const [formValid, setFormValid] = useState(false);
 
+  // Function to calculate progress
+  const calculateProgress = () => {
+    const fields = [fname, lname, country, email, phoneNumber, company];
+    const filledFields = fields.filter((field) => field.trim() !== "").length;
+    return Math.floor((filledFields / fields.length) * 50);
+  };
+
   // Function to check if all required fields are filled
   useEffect(() => {
-    setFormValid(
+    const isFormValid =
       fname.trim() !== "" &&
-        lname.trim() !== "" &&
-        country.trim() !== "" &&
-        email.trim() !== "" &&
-        phoneNumber.trim() !== "" &&
-        company.trim() !== ""
-    );
+      lname.trim() !== "" &&
+      country.trim() !== "" &&
+      email.trim() !== "" &&
+      phoneNumber.trim() !== "" &&
+      company.trim() !== "";
+
+    setFormValid(isFormValid);
+    setProgress(calculateProgress);
   }, [fname, lname, country, email, phoneNumber, company]);
 
   // useEffect to fetch all countries
@@ -45,9 +54,15 @@ function ContactInfo() {
     fetchAllCountries();
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setContactFilled(true);
+    console.log("Contact Filled");
+  };
+
   return (
     <div>
-      <form action="" className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <InputField
           label="First Name"
           placeholder="John"
