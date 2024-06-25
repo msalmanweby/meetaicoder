@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 
 function SelectCountry({
   label,
@@ -47,7 +48,7 @@ function SelectCountry({
           value={search}
           onClick={() => setOpen(!open)}
           onChange={handleInputChange}
-          className="bg-gray-900 p-2 rounded-[10px] border-2 border-gray-800 text-white outline-none textx-[14px] font-light placeholder:text-gray-700"
+          className="bg-gray-900 p-2 rounded-[10px] border-2 border-gray-800 text-white outline-none items-center text-[14px] font-medium placeholder:text-gray-700"
         />
       </div>
       {open && (
@@ -59,8 +60,10 @@ function SelectCountry({
                 className="flex items-center gap-2 p-2 hover:bg-gray-200 cursor-pointer"
                 onClick={() => handleCountryClick(country)}
               >
-                <img
+                <Image
                   src={country.flags.svg}
+                  width={24}
+                  height={16}
                   alt={country.name.common}
                   className="w-6 h-4"
                 />

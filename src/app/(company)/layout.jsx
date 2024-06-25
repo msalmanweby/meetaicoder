@@ -26,8 +26,8 @@ export default function Layout({ children }) {
           <NavigationMenu />
           <EmbedChatbot />
           <ReduxProvider>{children}</ReduxProvider>
-          <Footer />
         </main>
+        <Footer />
       </body>
     </html>
   );

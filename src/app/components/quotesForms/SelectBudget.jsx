@@ -22,11 +22,11 @@ function SelectBudget({ label, budget, setBudget }) {
     <div className="flex flex-col gap-2">
       <label
         htmlFor={label}
-        className="text-white text-[16px] font-bold capitalize"
+        className="text-white text-[14px] font-bold capitalize"
       >
         {label}
       </label>
-      <div className="flex justify-between bg-gray-900 p-2 rounded-[10px] border-2 border-gray-800 outline-none text-[14px] font-light text-gray-700 text-start">
+      <div className="flex justify-between bg-gray-900 p-2 rounded-[10px] border-2 border-gray-800 outline-none text-[14px] font-medium text-gray-700 text-start">
         {budget !== null && budget !== undefined ? (
           <p className="text-white">{budget}</p>
         ) : (

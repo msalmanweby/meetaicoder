@@ -44,12 +44,12 @@ function SelectProjectCategory({ label, selected, setSelected }) {
     <div className="flex flex-col gap-2">
       <label
         htmlFor={label}
-        className="text-white text-[16px] font-bold capitalize"
+        className="text-white text-[14px] font-bold capitalize"
       >
         {label}
       </label>
       <div className="flex flex-col gap-2">
-        <div className="flex justify-between bg-gray-900 p-2 rounded-[10px] border-2 border-gray-800 outline-none text-[14px] font-light text-gray-700 text-start">
+        <div className="flex justify-between items-center bg-gray-900 p-2 rounded-[10px] border-2 border-gray-800 outline-none text-[14px] font-medium text-gray-700 text-start">
           {selected.length > 0 ? (
             <div className="flex flex-wrap gap-2 w-auto">
               {selected.map((item, index) => (

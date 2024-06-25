@@ -6,7 +6,7 @@ import SelectBudget from "./SelectBudget";
 import SelectPreference from "./SelectPreference";
 import FormButton from "./FormButton";
 
-function ProjectInfo({ setProgress }) {
+function ProjectInfo({ setProgress, setProjectFilled }) {
   const [projectName, setProjectName] = useState("");
   const [projectCategory, setProjectCategory] = useState([]);
   const [link, setLink] = useState("");
@@ -14,8 +14,16 @@ function ProjectInfo({ setProgress }) {
   const [prefrence, setPreference] = useState("");
   const [formValid, setFormValid] = useState(false);
 
+  const paylod = {
+    projectName: projectName,
+    projectCategory: projectCategory,
+    link: link,
+    budget: budget,
+    prefrence: prefrence,
+  };
+
   useEffect(() => {
-    const fields = [projectName, projectCategory, link, budget, prefrence];
+    const fields = [projectName, projectCategory, budget, prefrence];
     const isFieldFilled = (field) => {
       if (Array.isArray(field)) {
         return field.length > 0;
@@ -29,10 +37,25 @@ function ProjectInfo({ setProgress }) {
 
     const isFormValid = filledFields === fields.length;
     setFormValid(isFormValid);
-  }, [projectName, projectCategory, link, budget, prefrence, setProgress]);
+  }, [projectName, projectCategory, budget, prefrence, setProgress]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setProjectFilled(true);
+    const response = await fetch(`${baseUrl}info/postProjectInfo/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(paylod),
+    });
+
+    if (response.status === 200) {
+      console.log("Contact Submitted");
+    } else {
+      console.log("Error submission");
+    }
   };
 
   return (

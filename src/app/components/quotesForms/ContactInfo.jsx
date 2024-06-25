@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import InputField from "./InputField";
 import SelectCountry from "./SelectCountry";
 import FormButton from "./FormButton";
+import baseUrl from "../UrlPatterns";
 
 function ContactInfo({ setProgress, setContactFilled }) {
   const [fname, setFname] = useState("");
@@ -14,11 +15,14 @@ function ContactInfo({ setProgress, setContactFilled }) {
   const [allCountries, setAllCountries] = useState([]);
   const [formValid, setFormValid] = useState(false);
 
-  // Function to calculate progress
-  const calculateProgress = () => {
-    const fields = [fname, lname, country, email, phoneNumber, company];
-    const filledFields = fields.filter((field) => field.trim() !== "").length;
-    return Math.floor((filledFields / fields.length) * 50);
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const isValidPhoneNumber = (phoneNumber) => {
+    const phoneRegex = /^[0-9\s-()+]+$/;
+    return phoneRegex.test(phoneNumber);
   };
 
   // Function to check if all required fields are filled
@@ -28,9 +32,22 @@ function ContactInfo({ setProgress, setContactFilled }) {
     const progress = Math.floor((filledFields / fields.length) * 50);
     setProgress(progress);
 
-    const isFormValid = filledFields === fields.length;
+    const isEmailValid = isValidEmail(email);
+    const isPhoneNumberValid = isValidPhoneNumber(phoneNumber);
+
+    const isFormValid =
+      filledFields === fields.length && isEmailValid && isPhoneNumberValid;
     setFormValid(isFormValid);
   }, [fname, lname, country, email, phoneNumber, company, setProgress]);
+
+  const paylod = {
+    fname: fname,
+    lname: lname,
+    country: country,
+    email: email,
+    phoneNumber: phoneNumber,
+    company: company,
+  };
 
   // useEffect to fetch all countries
   useEffect(() => {
@@ -51,9 +68,24 @@ function ContactInfo({ setProgress, setContactFilled }) {
     fetchAllCountries();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setContactFilled(true);
+
+    const response = await fetch(`${baseUrl}info/postContactInfo/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(paylod),
+    });
+
+    if (response.status === 200) {
+      console.log("Contact Submitted");
+    } else {
+      console.log("Error submission");
+    }
   };
 
   return (
