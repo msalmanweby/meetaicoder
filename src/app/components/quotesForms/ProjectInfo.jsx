@@ -5,25 +5,27 @@ import SelectProjectCategory from "./SelectProjectCategory";
 import SelectBudget from "./SelectBudget";
 import SelectPreference from "./SelectPreference";
 import FormButton from "./FormButton";
+import baseUrl from "../UrlPatterns";
 
-function ProjectInfo({ setProgress, setProjectFilled }) {
+function ProjectInfo({ setProgress, setProjectFilled, formId }) {
   const [projectName, setProjectName] = useState("");
   const [projectCategory, setProjectCategory] = useState([]);
   const [link, setLink] = useState("");
   const [budget, setBudget] = useState("");
-  const [prefrence, setPreference] = useState("");
+  const [preference, setPreference] = useState("");
   const [formValid, setFormValid] = useState(false);
 
-  const paylod = {
+  const payload = {
+    id: formId,
     projectName: projectName,
     projectCategory: projectCategory,
     link: link,
     budget: budget,
-    prefrence: prefrence,
+    preference: preference,
   };
 
   useEffect(() => {
-    const fields = [projectName, projectCategory, budget, prefrence];
+    const fields = [projectName, projectCategory, budget, preference];
     const isFieldFilled = (field) => {
       if (Array.isArray(field)) {
         return field.length > 0;
@@ -37,22 +39,23 @@ function ProjectInfo({ setProgress, setProjectFilled }) {
 
     const isFormValid = filledFields === fields.length;
     setFormValid(isFormValid);
-  }, [projectName, projectCategory, budget, prefrence, setProgress]);
+  }, [projectName, projectCategory, budget, preference, setProgress]);
 
   const handleSubmit = async (e) => {
+    console.log("filled");
     e.preventDefault();
-    setProjectFilled(true);
+
     const response = await fetch(`${baseUrl}info/postProjectInfo/`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(paylod),
+      body: JSON.stringify(payload),
     });
 
     if (response.status === 200) {
-      console.log("Contact Submitted");
+      setProjectFilled(true);
     } else {
       console.log("Error submission");
     }
@@ -87,7 +90,7 @@ function ProjectInfo({ setProgress, setProjectFilled }) {
         />
         <SelectPreference
           label={"Choose Preference"}
-          preference={prefrence}
+          preference={preference}
           setPreference={setPreference}
         />
         <FormButton type={"submit"} text={"Submit"} disabled={!formValid} />

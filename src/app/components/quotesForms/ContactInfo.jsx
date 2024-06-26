@@ -5,7 +5,7 @@ import SelectCountry from "./SelectCountry";
 import FormButton from "./FormButton";
 import baseUrl from "../UrlPatterns";
 
-function ContactInfo({ setProgress, setContactFilled }) {
+function ContactInfo({ setProgress, setContactFilled, setFormID }) {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [country, setCountry] = useState("");
@@ -40,7 +40,7 @@ function ContactInfo({ setProgress, setContactFilled }) {
     setFormValid(isFormValid);
   }, [fname, lname, country, email, phoneNumber, company, setProgress]);
 
-  const paylod = {
+  const payload = {
     fname: fname,
     lname: lname,
     country: country,
@@ -78,11 +78,13 @@ function ContactInfo({ setProgress, setContactFilled }) {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(paylod),
+      body: JSON.stringify(payload),
     });
 
+    const responseData = await response.json();
+
     if (response.status === 200) {
-      console.log("Contact Submitted");
+      setFormID(responseData.message);
     } else {
       console.log("Error submission");
     }

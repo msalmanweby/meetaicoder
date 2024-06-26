@@ -9,6 +9,7 @@ function Page() {
   const [progress, setProgress] = useState(0);
   const [contactFilled, setContactFilled] = useState(false);
   const [projectFilled, setProjectFilled] = useState(false);
+  const [formId, setFormID] = useState("");
 
   const handleSetContactProgress = (contactProgress) => {
     const totalProgress = contactProgress + (contactFilled ? 50 : 0);
@@ -42,11 +43,13 @@ function Page() {
             <ProjectInfo
               setProgress={handleSetProjectProgress}
               setProjectFilled={setProjectFilled}
+              formId={formId}
             />
           ) : (
             <ContactInfo
               setProgress={handleSetContactProgress}
               setContactFilled={setContactFilled}
+              setFormID={setFormID}
             />
           )}
         </React.Fragment>
