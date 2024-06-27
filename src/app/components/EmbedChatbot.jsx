@@ -123,7 +123,7 @@ const EmbedChatbot = () => {
             </div>
             <div className={
                 isOpen
-                    ? "fixed flex flex-col items-start justify-center gap-8 right-0 bottom-0 w-full h-full bg-gray-500 p-4 sm:p-8 ease-out duration-700 bg-opacity-50 backdrop-blur-lg z-[9999]"
+                    ? "fixed flex flex-col items-start justify-center gap-8 right-0 bottom-0 w-full h-full bg-white/30 p-4 sm:p-8 ease-out duration-700 bg-opacity-50 backdrop-blur-lg z-[9999]"
                     : "fixed flex flex-col items-start justify-center right-[-100%] w-full h-full bottom-0 p-4 sm:p-8 gap-8 ease-in duration-700 z-[9999]"
             }>
                 <div className='flex w-full justify-between items-center'>
@@ -155,15 +155,16 @@ const EmbedChatbot = () => {
                         </React.Fragment>
                     ))}
                 </div>
-                <div className="flex border-2 border-gray-500 w-full h-20 rounded-full px-4 sm:px-8 justify-between items-center">
+                <div className="flex border-2 border-gray-500  w-full h-20 rounded-full px-4 sm:px-8 justify-between items-center focus-within:border-white ">
                     <div className="flex flex-grow">
                         <input
-                            className="w-full bg-transparent outline-none placeholder-gray-400 text-white text-[14px] sm:text-[16px] font-medium"
+                            className="w-full bg-transparent outline-none  placeholder-gray-400 text-white text-[14px] sm:text-[16px] font-medium"
                             type="text"
                             placeholder="Ask MeetAI Coders Agent"
                             onChange={handleMessage}
                             value={message}
                             onKeyDown={handleKeyDown}
+                            autoFocus
                         />
                     </div>
                     <div className="flex gap-8">
