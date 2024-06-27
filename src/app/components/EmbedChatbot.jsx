@@ -123,7 +123,7 @@ const EmbedChatbot = () => {
             </div>
             <div className={
                 isOpen
-                    ? "fixed flex flex-col items-start justify-center gap-8 right-0 bottom-0 w-full h-full bg-gray-950/30 p-4 sm:p-8 ease-out duration-700 backdrop-blur-md z-[9999]"
+                    ? "fixed flex flex-col items-start justify-center gap-8 right-0 bottom-0 w-full h-full bg-gray-900 p-4 sm:p-8 ease-out duration-700 z-[9999]"
                     : "fixed flex flex-col items-start justify-center right-[-100%] w-full h-full bottom-0 p-4 sm:p-8 gap-8 ease-in duration-700 z-[9999]"
             }>
                 <div className='flex w-full justify-between items-center'>
