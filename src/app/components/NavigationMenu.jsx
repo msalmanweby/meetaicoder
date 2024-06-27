@@ -66,7 +66,7 @@ function NavigationMenu() {
             </button>
             <div className={
                 isOpen
-                    ? "fixed left-0 top-0 min-w-[70%] sm:hidden min-h-screen bg-white p-10 bg-opacity-50 ease-out duration-500 backdrop-blur z-[9999]"
+                    ? "fixed left-0 top-0 min-w-[70%] sm:hidden min-h-screen p-10 bg-gray-950/30 ease-out duration-500 backdrop-blur-md z-[9999]"
                     : "fixed left-[-100%] min-h-screen top-0 p-10 ease-in duration-75"
             }>
                 <div className='flex flex-col'>
