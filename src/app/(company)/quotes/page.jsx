@@ -4,6 +4,7 @@ import QuoteTopHeadline from "../../components/QuoteTopHeadline";
 import ContactInfo from "../../components/quotesForms/ContactInfo";
 import ProgressBar from "../../components/quotesForms/ProgressBar";
 import ProjectInfo from "../../components/quotesForms/ProjectInfo";
+import ThankYou from "../../components/quotesForms/ThankYou";
 
 function Page() {
   const [progress, setProgress] = useState(0);
@@ -22,14 +23,10 @@ function Page() {
   };
 
   return (
-    <div className="flex flex-col w-full py-8 px-4">
+    <div className="flex flex-col w-full items-center justify-center">
+    <div className="flex flex-col w-full sm:w-[50%] py-8 px-4">
       {projectFilled ? (
-        <div className="h-80">
-          <p className="text-white capitalize text-center">
-            Thankyou for submitting request, Our agents will contact your
-            shortly
-          </p>
-        </div>
+        <ThankYou/>
       ) : (
         <React.Fragment>
           <ProgressBar progress={progress} />
@@ -54,6 +51,7 @@ function Page() {
           )}
         </React.Fragment>
       )}
+    </div>
     </div>
   );
 }

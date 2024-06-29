@@ -13,8 +13,8 @@ function Footer() {
       title: "Services",
     },
     {
-      href: "/blogs",
-      title: "Blogs",
+      href: "/requestdemo",
+      title: "Demo",
     },
     {
       href: "/contact",
@@ -24,30 +24,22 @@ function Footer() {
 
   const SocialItems = [
     {
-      href: "/about",
-      title: "Instgram",
-    },
-    {
-      href: "/services",
-      title: "Twitter",
-    },
-    {
-      href: "/blogs",
-      title: "Github",
-    },
-    {
-      href: "/contact",
+      href: "https://www.facebook.com/profile.php?id=61561040297684",
       title: "Facebook",
+    },
+    {
+      href: "https://www.linkedin.com/company/meet-ai-coders",
+      title: "LinkedIn",
     },
   ];
 
   const Legal = [
     {
-      href: "/about",
+      href: "/privacy-policy",
       title: "Privacy Policy",
     },
     {
-      href: "/services",
+      href: "/legal-terms",
       title: "Legal Terms",
     },
   ];
