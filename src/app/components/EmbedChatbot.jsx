@@ -111,7 +111,7 @@ const EmbedChatbot = () => {
 
         } catch (error) {
             console.error('Error fetching data:', error);
-            newChatItem.response = "Some error occurred";
+            newChatItem.response = "The agent is not available at the moment. Try again later";
             setChatHistory([...chatHistory, newChatItem]); // Update chat history with error response
         }
     };
